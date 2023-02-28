@@ -323,7 +323,7 @@ class Cursor implements \Iterator
      *
      * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_position = 0;
     }
@@ -334,7 +334,7 @@ class Cursor implements \Iterator
      *
      * @return array - the current result row as an assoc array
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->_result[$this->_position];
     }
@@ -345,7 +345,7 @@ class Cursor implements \Iterator
      *
      * @return int - the current result row index
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->_position;
     }
@@ -356,7 +356,7 @@ class Cursor implements \Iterator
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->_position;
     }
@@ -371,7 +371,7 @@ class Cursor implements \Iterator
      * @throws Exception
      * @return bool - true if the cursor can be advanced further, false if cursor is at end
      */
-    public function valid()
+    public function valid(): bool
     {
         if ($this->_position <= $this->_length - 1) {
             // we have more results than the current position is

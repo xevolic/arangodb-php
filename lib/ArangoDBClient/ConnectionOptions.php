@@ -45,7 +45,7 @@ class ConnectionOptions implements \ArrayAccess
     /**
      * Optional Memcached instance for endpoints caching
      *
-     * @var Memcached
+     * @var \Memcached
      */
     private $_cache = null;
 
@@ -295,7 +295,7 @@ class ConnectionOptions implements \ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->_values[$offset] = $value;
         $this->validate();
@@ -308,7 +308,7 @@ class ConnectionOptions implements \ArrayAccess
      *
      * @return bool - true if option exists, false otherwise
      */
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->_values[$offset]);
     }
@@ -322,7 +322,7 @@ class ConnectionOptions implements \ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->_values[$offset]);
         $this->validate();
@@ -337,7 +337,7 @@ class ConnectionOptions implements \ArrayAccess
      *
      * @return mixed - value of option, will throw if option is not set
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         if (!array_key_exists($offset, $this->_values)) {
             throw new ClientException('Invalid option ' . $offset);
